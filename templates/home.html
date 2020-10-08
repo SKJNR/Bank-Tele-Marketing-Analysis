@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="static/images/icon.png"/>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+
+label {
+  font-style: normal;
+   font-size: 20px;
+   font-family: Georgia;
+
+
+
+}
+
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.col-25 {
+  float: center;
+  width: 40%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: center;
+  width: 40%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 20%;
+    margin-top: 0;
+  }
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+h2.oblique {
+  font-style: oblique;
+ font-size: 40px;
+ font-weight: bold;
+font-variant: small-caps;
+}
+</style>
+</head>
+</head>
+<body>
+<div class="login">
+
+    <!-- Get input for predict the cancer -->
+    <center>
+    <form action="{{ url_for('predict')}}"method="post">
+            <center><H1>Tele Marketing Analysis</H1></center>
+
+            <p>  Portuguese bank in order to design strategies for improving future marketing campaigns. The object of this campaign is to pursue customers to subscribe the term deposit. The Marketing campaign was based on phone calls. The classification goal is to predict if the client will  subscribe a term deposit (variable y). Often, more than one contact to the same client was required, in  order to access if the product (bank term deposit) would be (or not) subscribed. </p>
+        <center><h2>Enter Details </h2> </center>
+            <div class="row">
+                   <div class="col-25">
+                     <label for="age">Age</label>
+                   </div>
+                <div class="col-75">
+                        <input type="text" id="age" name="age" placeholder="your age...." required >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                   <label for="marital">Marital status</label>
+                </div>
+                <div class="col-25">
+                  <select id="marital" name="marital">
+                        <option value="0">Married</option>
+                        <option value="1">Single</option>
+                        <option value="2">Divorced</option>
+                  </select>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-25">
+                   <label for="contact">Network Type</label>
+                </div>
+                <div class="col-25">
+                  <select id="contact" name="contact">
+                        <option value="0">Cellular</option>
+                        <option value="1">Unknown</option>
+                        <option value="2">Telephone</option>
+                  </select>
+                </div>
+             </div>
+              <div class="row">
+                <div class="col-25">
+                   <label for="education">Education</label>
+                </div>
+                <div class="col-25">
+                     <select id="education" name="education">
+                             <option value="0">Secondary</option>
+                             <option value="1">Tertiary</option>
+                             <option value="2">Primary</option>
+                            <option value="3">Other</option>
+                     </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                   <label for="poutcome">Previous Marketing Campaign Outcome</label>
+                </div>
+                <div class="col-25">
+                    <select id="poutcome" name="poutcome">
+                             <option value="0">Unknown</option>
+                             <option value="1">Success</option>
+                             <option value="2">Failure</option>
+                     </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                   <label for="job">Job</label>
+                </div>
+                <div class="col-25">
+                    <select id="job" name="job">
+                             <option value="0">Blue-collar</option>
+                             <option value="1">Management</option>
+                             <option value="2">Technician</option>
+                             <option value="3">Admin</option>
+                             <option value="4">Services</option>
+                             <option value="5">Retired</option>
+                             <option value="6">Self-Employed</option>
+                             <option value="7">Entrepreneur</option>
+                             <option value="8">Un-employed</option>
+                             <option value="9">Housemaid</option>
+                             <option value="10">Student</option>
+                             <option value="11">Other</option>
+                     </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                   <label for="housing">Have Housing Loan</label>
+                </div>
+                <div class="col-25">
+                    <select id="housing" name="housing">
+                             <option value="0">No</option>
+                             <option value="1">Yes</option>
+                     </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                   <label for="loan">Have Personal Loan</label>
+                </div>
+                <div class="col-25">
+                    <select id="loan" name="loan">
+                             <option value="1">Yes</option>
+                             <option value="0">No</option>
+
+                     </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                   <label for="default">Credit In Default</label>
+                </div>
+                <div class="col-25">
+                    <select id="default" name="default">
+                             <option value="1">Yes</option>
+                             <option value="0">No</option>
+                     </select>
+                </div>
+              </div>
+              <div class="row">
+                   <div class="col-25">
+                     <label for="balance">Balance</label>
+                   </div>
+                <div class="col-75">
+                        <input type="text" id="balance" name="balance" placeholder="Enter balance ...." required >
+                </div>
+            </div>
+               <div class="row">
+                <div class="col-25">
+                   <label for="month_int">Month</label>
+                </div>
+                <div class="col-25">
+                    <select id="month_int" name="month_int">
+                             <option value="1">Jan</option>
+                             <option value="2">Feb</option>
+                             <option value="3">Mar</option>
+                             <option value="4">Apr</option>
+                             <option value="5">May</option>
+                             <option value="6">Jun</option>
+                             <option value="7">Jul</option>
+                             <option value="8">Aug</option>
+                             <option value="9">Sep</option>
+                             <option value="10">Oct</option>
+                             <option value="11">Nov</option>
+                             <option value="12">Dec</option>
+                     </select>
+                </div>
+              </div>
+             <div class="row">
+                <div class="col-25">
+                   <label for="day">Date</label>
+                </div>
+               <div class="col-25">
+                    <select id="day" name="day">
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option>
+                             <option value="6">6</option>
+                             <option value="7">7</option>
+                             <option value="8">8</option>
+                             <option value="9">9</option>
+                             <option value="10">10</option>
+                             <option value="11">11</option>
+                             <option value="12">12</option>
+                             <option value="13">13</option>
+                             <option value="14">14</option>
+                             <option value="15">15</option>
+                             <option value="16">16</option>
+                             <option value="17">17</option>
+                             <option value="18">18</option>
+                             <option value="19">19</option>
+                             <option value="20">20</option>
+                             <option value="21">21</option>
+                             <option value="22">22</option>
+                             <option value="23">23</option>
+                             <option value="24">24</option>
+                            <option value="25">25</option>
+                             <option value="26">26</option>
+                             <option value="27">27</option>
+                             <option value="28">28</option>
+                             <option value="29">29</option>
+                             <option value="30">30</option>
+                             <option value="31">31</option>
+
+                     </select>
+                </div>
+              </div>
+              <div class="row">
+                   <div class="col-25">
+                     <label for="duration">Duration in Sec</label>
+                   </div>
+                <div class="col-75">
+                        <input type="text" id="duration" name="duration" placeholder="duration in seconds ...." required >
+                </div>
+            </div>
+            <div class="row">
+                   <div class="col-25">
+                     <label for="pdays">Number of days passed by after the client was last contacted from a previous campaign </label>
+                   </div>
+                <div class="col-75">
+                        <input type="text" id="pdays" name="pdays" placeholder="Enter total day's  and If client not contacted previously enter -1 ...." required >
+                </div>
+            </div>
+             <div class="row">
+                   <div class="col-25">
+                     <label for="campaign">Number of contacts performed during this campaign </label>
+                   </div>
+                <div class="col-75">
+                        <input type="text" id="campaign" name="campaign" placeholder="Enter total contact's  and Include last contact......" required >
+                </div>
+            </div>
+            <div class="row">
+                   <div class="col-25">
+                     <label for="previous">Total contacts performed before this campaign and for this client </label>
+                   </div>
+                <div class="col-75">
+                        <input type="text" id="previous" name="previous" placeholder="Enter total contacts performed before this campaign and for this clientt......" required >
+                </div>
+            </div>
+
+
+            <br>
+            <br>
+            <button type="submit" class="btn btn-outline-warning">Predict</button>
+
+
+        </form>
+    </center>
+
+   <!-- Show predicted output using ML model -->
+   <div>
+       <center>
+   <h1>{{ prediction_text }}</h1>
+       </center>
+   </div>
+
+    <center>Surekha Ramireddy</h4></center>
+     <center><h3> All Rights Reserved to  @AIIAG...</h3></center>>
+
+
+    </div>
+
+</body>
+</html>
